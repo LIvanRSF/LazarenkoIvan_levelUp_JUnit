@@ -12,6 +12,10 @@
     <maven.compiler.source>11</maven.compiler.source>
     <maven.compiler.target>11</maven.compiler.target>
     <maven-compiler-plugin.version>3.9.0</maven-compiler-plugin.version>
+    <selenium-java.version>4.1.2</selenium-java.version>
+    <assertj-core.version>3.22.0</assertj-core.version>
+    <commons-io.version>2.11.0</commons-io.version>
+    <webdrivermanager.version>5.1.0</webdrivermanager.version>
 
     <maven-checkstyle-plugin.version>3.1.2</maven-checkstyle-plugin.version>
     <checkstyle.version>8.42</checkstyle.version>
@@ -44,6 +48,31 @@
       <version>1.0</version>
       <scope>system</scope>
       <systemPath>${pom.basedir}/src/main/resources/calculator-1.0.jar</systemPath>
+    </dependency>
+
+    <dependency>
+      <groupId>org.seleniumhq.selenium</groupId>
+      <artifactId>selenium-java</artifactId>
+      <version>${selenium-java.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.assertj</groupId>
+      <artifactId>assertj-core</artifactId>
+      <version>${assertj-core.version}</version>
+      <scope>test</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>commons-io</groupId>
+      <artifactId>commons-io</artifactId>
+      <version>${commons-io.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>io.github.bonigarcia</groupId>
+      <artifactId>webdrivermanager</artifactId>
+      <version>${webdrivermanager.version}</version>
     </dependency>
   </dependencies>
 

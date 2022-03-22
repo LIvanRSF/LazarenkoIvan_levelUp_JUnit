@@ -1,28 +1,27 @@
 package selenium.tests.page.object;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
-import java.time.Duration;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import selenium.tests.SeleniumBasePage;
 
 public class MailExerciseOneTest extends SeleniumBasePage {
 
     @Test
     public void simpleTest() {
+        String login = "Junittestmail@mail.ru";
+        String password = "RaueAi^IpP12";
+
         //Войти в почту
         MailLoggingIn loggingIn = new MailLoggingIn(driver);
-        loggingIn.loggingIn("Junittestmail@mail.ru", "RaueAi^IpP12");
+        loggingIn.loggingIn(login, password);
 
         //Убедиться, что вход осуществлен успешно
-        WebElement loggedUser = wait.until(ExpectedConditions.visibilityOfElementLocated(
-            By.xpath("//span[@class = 'ph-project__user-name svelte-1hiqrvn']")));
-        Assertions.assertEquals(loggedUser.getText(), "Junittestmail@mail.ru".toLowerCase());
+        MailAuthorized loggedUser = new MailAuthorized(driver);
+        WebElement user = loggedUser.loggedUser();
+        Assertions.assertEquals(user.getText(), login.toLowerCase());
+
+        //Создать письмо, заполнить тему, адресата, тело + отправить
+        loggedUser.createLetter("fallouttoday@mail.ru", "Testovoe1", "Привет, мир!");
     }
 }

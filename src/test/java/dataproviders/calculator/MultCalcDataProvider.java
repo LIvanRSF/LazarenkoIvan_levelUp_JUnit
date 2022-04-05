@@ -1,4 +1,4 @@
-package dataproviders;
+package dataproviders.calculator;
 
 import java.util.stream.Stream;
 import org.junit.jupiter.params.provider.Arguments;

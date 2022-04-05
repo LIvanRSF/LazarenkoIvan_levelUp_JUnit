@@ -1,31 +1,37 @@
-package selenium.tests.page.object;
+package junit.mail.selenium.tests.mail.page.object;
 
-import java.util.Locale;
-import org.junit.jupiter.api.Assertions;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
-public class MailLoggingIn extends MailIndexPage {
+public class MailLoggingInAndOut extends MailIndexPage {
 
-    @FindBy(xpath = ("//*[@id = 'grid:middle'] //button[text() = 'Войти']"))
+    @FindBy(css = ("button[data-testid='enter-mail-primary']"))
     private WebElement logInButton;
 
     @FindBy(css = ("#login-content input[name='username']"))
     private WebElement accountNameField;
 
-    @FindBy(xpath = ("//span[text() = 'Ввести пароль']"))
+    @FindBy(css = ("button[data-test-id='next-button']"))
     private WebElement enterPasswordButton;
 
-    @FindBy(xpath = ("//input[@placeholder = 'Пароль']"))
+    @FindBy(css = ("input[name='password']"))
     private WebElement passwordField;
 
-    @FindBy(xpath = ("//span[text() = 'Войти']"))
+    @FindBy(css = ("button[data-test-id='submit-button']"))
     private WebElement submitEnterButton;
 
-    public MailLoggingIn(WebDriver driver) {
+    @FindBy(css = ("iframe.ag-popup__frame__layout__iframe"))
+    private WebElement loginFrame;
+
+    @FindBy(css = ("div[class='ph-project ph-project__account svelte-1hiqrvn ph-project-any']"))
+    private WebElement accountIcon;
+
+    @FindBy(xpath = ("//a[contains(@href,'//auth.mail.ru/cgi-bin/logout')]"))
+    private WebElement logoutButton;
+
+    public MailLoggingInAndOut(WebDriver driver) {
         super(driver);
     }
 
@@ -34,19 +40,19 @@ public class MailLoggingIn extends MailIndexPage {
         //Нажимаем кнопку "Войти" на главной странице
         wait.until(ExpectedConditions.elementToBeClickable(logInButton)).click();
         //Переключаемся на фрейм авторизации
-        wait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(
-            By.cssSelector("iframe.ag-popup__frame__layout__iframe")));
+        wait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(loginFrame));
         //Передаем логин
         wait.until(ExpectedConditions.visibilityOf(accountNameField)).sendKeys(accountName);
         wait.until(ExpectedConditions.elementToBeClickable(enterPasswordButton)).click();
         //Передаем пароль
         wait.until(ExpectedConditions.visibilityOf(passwordField)).sendKeys(password);
         wait.until(ExpectedConditions.elementToBeClickable(submitEnterButton)).click();
+    }
 
-        System.out.println(driver.getCurrentUrl());
-        //Убеждаемся, что вход выполнен успешно
-        WebElement loggedUser = wait.until(ExpectedConditions.visibilityOfElementLocated(
-            By.xpath("//span[@class = 'ph-project__user-name svelte-1hiqrvn']")));
-        Assertions.assertEquals(loggedUser.getText(), accountName.toLowerCase());
+    public void loggingOut() {
+        //заходим в меню аккаунта
+        wait.until(ExpectedConditions.elementToBeClickable(accountIcon)).click();
+        //выбираем "Выйти"
+        wait.until(ExpectedConditions.elementToBeClickable(logoutButton)).click();
     }
 }

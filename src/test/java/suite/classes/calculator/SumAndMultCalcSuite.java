@@ -1,4 +1,4 @@
-package suite.classes;
+package suite.classes.calculator;
 
 import junit.calc.tests.MultCalcTest;
 import junit.calc.tests.SumCalcTest;

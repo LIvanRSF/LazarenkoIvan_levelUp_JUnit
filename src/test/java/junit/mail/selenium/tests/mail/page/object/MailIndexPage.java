@@ -1,4 +1,4 @@
-package selenium.tests.page.object;
+package junit.mail.selenium.tests.mail.page.object;
 
 import org.openqa.selenium.WebDriver;
 

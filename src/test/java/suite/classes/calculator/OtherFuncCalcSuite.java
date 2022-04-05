@@ -1,4 +1,4 @@
-package suite.classes;
+package suite.classes.calculator;
 
 import junit.calc.tests.BooleanCalcTest;
 import junit.calc.tests.PowSqrtCalcTest;

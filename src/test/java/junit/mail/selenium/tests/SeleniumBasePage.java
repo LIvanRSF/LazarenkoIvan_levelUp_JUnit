@@ -1,6 +1,4 @@
-package selenium.tests;
-
-import static org.assertj.core.api.Assertions.assertThat;
+package junit.mail.selenium.tests;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.jupiter.api.AfterEach;
@@ -26,8 +24,8 @@ public abstract class SeleniumBasePage {
         driver.manage().window().maximize();
     }
 
-    //    @AfterEach
-    //    void tearDown() {
-    //        driver.quit();
-    //    }
+    @AfterEach
+    void tearDown() {
+        driver.quit();
+    }
 }

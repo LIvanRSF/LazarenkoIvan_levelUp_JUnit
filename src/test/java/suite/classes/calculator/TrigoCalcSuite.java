@@ -1,4 +1,4 @@
-package suite.classes;
+package suite.classes.calculator;
 
 import junit.calc.tests.TrigoCalcTest;
 import org.junit.platform.suite.api.SelectClasses;

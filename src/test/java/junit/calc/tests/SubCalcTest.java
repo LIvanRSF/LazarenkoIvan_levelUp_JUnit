@@ -8,14 +8,14 @@ import org.junit.jupiter.params.provider.MethodSource;
 public class SubCalcTest extends BaseCalcTestClass {
 
     @ParameterizedTest
-    @MethodSource("dataproviders.SubCalcDataProvider#subCalcDataProvider")
+    @MethodSource("dataproviders.calculator.SubCalcDataProvider#subCalcDataProvider")
     public void subLongTest(long a, long b, long expectedResult) {
         long actualResult = calc.sub(a, b);
         assertEquals(expectedResult, actualResult);
     }
 
     @ParameterizedTest
-    @MethodSource("dataproviders.SubCalcDataProvider#subCalcDataProvider")
+    @MethodSource("dataproviders.calculator.SubCalcDataProvider#subCalcDataProvider")
     public void subDoubleTest(double a, double b, double expectedResult) {
         double actualResult = calc.sub(a, b);
         assertEquals(expectedResult, actualResult);

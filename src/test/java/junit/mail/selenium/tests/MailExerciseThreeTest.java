@@ -38,7 +38,8 @@ public class MailExerciseThreeTest extends SeleniumBasePage {
 
         //Verify, что письмо появилось в папке Входящие
         var inboxFolder = new MailInboxFolder(driver);
-        inboxFolder.inboxFolderIsNotEmpty();
+        var inboxFolderIsNotEmpty = inboxFolder.inboxFolderIsNotEmpty();
+        Assertions.assertTrue(inboxFolderIsNotEmpty);
 
         //Verify контент, адресата и тему письма (должно совпадать с пунктом 3)
         inboxFolder.clickOnInboxLetterInFolder();

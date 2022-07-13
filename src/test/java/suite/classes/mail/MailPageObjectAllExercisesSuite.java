@@ -8,5 +8,5 @@ import org.junit.platform.suite.api.Suite;
 
 @SelectClasses({MailExerciseOneTest.class, MailExerciseTwoTest.class, MailExerciseThreeTest.class})
 @Suite
-public class MailAllExercisesSuite {
+public class MailPageObjectAllExercisesSuite {
 }
